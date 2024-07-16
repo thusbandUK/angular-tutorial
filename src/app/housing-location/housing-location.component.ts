@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import {HousingLocation} from '../housinglocation';
 import {CommonModule} from '@angular/common';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 /*
 https://angular.dev/tutorials/first-app/07-dynamic-template-values
@@ -14,9 +15,10 @@ You use interpolation to include the values for name, city and state of the hous
 @Component({
   selector: 'app-housing-location',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, RouterOutlet],
   template: `
     <section class="listing">
+      <a [routerLink]="['/details', housingLocation.id]">Learn More</a>
       <img
         class="listing-photo"
         [src]="housingLocation.photo"
