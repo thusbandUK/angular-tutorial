@@ -2,11 +2,31 @@ import { Component, Input } from '@angular/core';
 import {HousingLocation} from '../housinglocation';
 import {CommonModule} from '@angular/common';
 
+/*
+https://angular.dev/tutorials/first-app/07-dynamic-template-values
+
+In this updated template code you have used property binding to bind the housingLocation.photo to the src attribute. The alt 
+attribute uses interpolation to give more context to the alt text of the image.
+
+You use interpolation to include the values for name, city and state of the housingLocation property.
+*/
+
 @Component({
   selector: 'app-housing-location',
   standalone: true,
   imports: [],
-  templateUrl: './housing-location.component.html',
+  template: `
+    <section class="listing">
+      <img
+        class="listing-photo"
+        [src]="housingLocation.photo"
+        alt="Exterior photo of {{ housingLocation.name }}"
+        crossorigin
+      />
+      <h2 class="listing-heading">{{ housingLocation.name }}</h2>
+      <p class="listing-location">{{ housingLocation.city }}, {{ housingLocation.state }}</p>
+    </section>
+  `,
   styleUrl: './housing-location.component.css'
 })
 /*
