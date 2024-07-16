@@ -1,0 +1,50 @@
+1) https://stackoverflow.com/questions/50843655/angular-6-failing-to-load-images-from-assets
+
+Suggested that below (at time of writing what is in angular.json file for "assets") should be replaced with "src/assets"; 
+Initially appeared not to work, but then suddenly it seemed that it was indeed the correct solution
+// {
+              //  "glob": "**/*",
+               // "input": "public"
+              //}
+
+              
+               {
+                "glob": "**/*",
+                "input": "public"
+              }  
+
+
+**INCORRECT SOLUTION**
+
+0.5) Code if needed:
+
+<img class="brand-logo" src="assets/chopstickMolymod.png" alt="logo" aria-hidden="true" />
+  <img src="/assets/img.jpg" alt="">
+
+1) Location of assets folder (for images etc)
+
+https://angular.dev/reference/configs/file-structure#workspace-configuration-files
+
+section: "public"
+
+Docs explain that assets folder should be located in public (for later versions) rather than src (as per previous versions)
+
+
+2) Previous attempts to fix problem
+
+https://stackoverflow.com/questions/50843655/angular-6-failing-to-load-images-from-assets
+
+Suggested that below (at time of writing what is in angular.json file for "assets") should be replaced with "src/assets"; 
+didn't work
+// {
+              //  "glob": "**/*",
+               // "input": "public"
+              //}
+
+              
+               {
+                "glob": "**/*",
+                "input": "public"
+              }         
+
+**INCORRECT SOLUTION ENDS**  
