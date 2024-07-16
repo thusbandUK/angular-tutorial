@@ -8,6 +8,12 @@ this was in imports CommonModule. v frustrating, basically their app shows the c
 line above) but including common module in the imports crashes the app 
 */
 
+/*
+inre: template 2nd section
+When adding a property binding to a component tag, we use the [attribute] = "value" syntax to notify Angular that the assigned 
+value should be treated as a property from the component class and not a string value.
+*/
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -20,8 +26,8 @@ line above) but including common module in the imports crashes the app
       </form>
     </section>
     <section class="results">
-      <app-housing-location></app-housing-location>
-    </section>
+      <app-housing-location [housingLocation]="housingLocation"></app-housing-location>
+    </section>    
   `,
   styleUrl: './home.component.css'
 })
