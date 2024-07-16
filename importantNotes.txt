@@ -1,3 +1,6 @@
+next session begins at tutorial p9
+https://angular.dev/tutorials/first-app/09-services
+
 1) https://stackoverflow.com/questions/50843655/angular-6-failing-to-load-images-from-assets
 
 Suggested that below (at time of writing what is in angular.json file for "assets") should be replaced with "src/assets"; 
