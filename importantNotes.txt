@@ -1,5 +1,5 @@
-next session begins at tutorial p9
-https://angular.dev/tutorials/first-app/09-services
+next session begins at tutorial p12
+https://angular.dev/tutorials/first-app/12-forms
 
 1) https://stackoverflow.com/questions/50843655/angular-6-failing-to-load-images-from-assets
 
