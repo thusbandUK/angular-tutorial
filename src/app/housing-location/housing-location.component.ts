@@ -40,6 +40,6 @@ undefined.
  */
 
 
-export class HousingLocationComponent {
-  @Input() housingLocation!: HousingLocation;
+export class HousingLocationComponent {  
+  @Input() housingLocation!: HousingLocation;  
 }

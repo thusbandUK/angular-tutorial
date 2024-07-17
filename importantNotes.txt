@@ -1,7 +1,29 @@
-next session begins at tutorial p12
-https://angular.dev/tutorials/first-app/12-forms
+1) On the last page the tutorial introduced async http calls
 
-1) https://stackoverflow.com/questions/50843655/angular-6-failing-to-load-images-from-assets
+https://angular.dev/tutorials/first-app/14-http
+
+This involved creating a mock database, which was interesting in itself, because it generated a json object at a local port, 
+which the front end app then call on as if it was a database.
+
+In the process it called what had previously been template literals as strings, meaning that the DOM was just receiving
+image src strings like this: "${this.baseUrl}[rest of string]" which didn't work
+
+in the home.component.ts constructor, I hacked in the following solution:
+
+housingLocationList.forEach((x=>{        
+        return x.photo = x.photo.replace("${this.baseUrl}", this.baseUrl);
+      }));
+
+(Where baseUrl was defined above the constructor in the home.component.ts export Class)
+
+2) css variables
+
+Didn't manage to fix this. Fora threads suggest that Angular needs to be configured to accept css variables
+
+Just went through the css and subbed in the hex codes, to make the search button appear
+
+
+3) https://stackoverflow.com/questions/50843655/angular-6-failing-to-load-images-from-assets
 
 Suggested that below (at time of writing what is in angular.json file for "assets") should be replaced with "src/assets"; 
 Initially appeared not to work, but then suddenly it seemed that it was indeed the correct solution

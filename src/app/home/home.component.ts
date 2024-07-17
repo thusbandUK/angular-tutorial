@@ -42,14 +42,21 @@ Does the input need a backslash?
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  //readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
+  readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
 
   housingService: HousingService = inject(HousingService);
   constructor() {
-    this.housingLocationList = this.housingService.getAllHousingLocations();
-    this.filteredLocationList = this.housingLocationList;
-  }
-  
+    this.housingService.getAllHousingLocations().then((housingLocationList: HousingLocation[]) => {
+      const baseUrl = this.baseUrl;
+      //the below is a pretty messy hack but it works
+      housingLocationList.forEach((x=>{        
+        return x.photo = x.photo.replace("${this.baseUrl}", this.baseUrl);
+      }));
+      this.housingLocationList = housingLocationList;
+      this.filteredLocationList = housingLocationList;
+    });
+  }  
+
   housingLocationList: HousingLocation[] = [];
 
   filteredLocationList: HousingLocation[] = [];
