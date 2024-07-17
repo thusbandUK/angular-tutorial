@@ -17,20 +17,24 @@ When adding a property binding to a component tag, we use the [attribute] = "val
 value should be treated as a property from the component class and not a string value.
 */
 
+/*
+Does the input need a backslash?
+*/
+
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [HousingLocationComponent, NgFor, CommonModule],
   template: `
     <section>
-      <form>
-        <input type="text" placeholder="Filter by city" />
-        <button class="primary" type="button">Search</button>
+      <form>        
+        <input type="text" placeholder="Filter by city" #filter>        
+        <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
       </form>
     </section>
-    <section class="results">
+    <section class="results">    
     <app-housing-location
-        *ngFor="let housingLocation of housingLocationList"
+        *ngFor="let housingLocation of filteredLocationList"
         [housingLocation]="housingLocation"        
       ></app-housing-location>
     </section>
@@ -43,7 +47,21 @@ export class HomeComponent {
   housingService: HousingService = inject(HousingService);
   constructor() {
     this.housingLocationList = this.housingService.getAllHousingLocations();
+    this.filteredLocationList = this.housingLocationList;
   }
   
   housingLocationList: HousingLocation[] = [];
+
+  filteredLocationList: HousingLocation[] = [];
+
+  filterResults(text: string) {
+    if (!text) {
+      this.filteredLocationList = this.housingLocationList;
+      return;
+    }
+    this.filteredLocationList = this.housingLocationList.filter((housingLocation) =>
+      housingLocation?.city.toLowerCase().includes(text.toLowerCase()),
+    );
+  }
+  
 }
